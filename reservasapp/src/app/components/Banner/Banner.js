@@ -11,7 +11,7 @@ const Banner = () => {
     "https://img.freepik.com/foto-gratis/cerrar-lindo-gato-interior_23-2148882585.jpg?size=426&ext=jpg&ga=GA1.1.87170709.1706400000&semt=sph",
     "https://img.freepik.com/fotos-premium/camino-madera-conduce-cadena-montanosa-puesta-sol-detras-ella_865967-31158.jpg",
     "https://img.freepik.com/foto-gratis/cerrar-lindo-gato-interior_23-2148882585.jpg?size=426&ext=jpg&ga=GA1.1.87170709.1706400000&semt=sph",
-    // Agrega más URLs de imágenes según sea necesario
+    'https://static.vecteezy.com/system/resources/previews/015/974/067/non_2x/starry-night-landscape-in-forest-scenery-illustration-vector.jpg'
   ]);
 
   const settings = {

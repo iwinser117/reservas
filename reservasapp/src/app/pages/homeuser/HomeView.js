@@ -5,7 +5,7 @@ import Banner from "@/app/components/Banner/Banner";
 import ContainerFilter from "@/app/components/filter/ContainerFilter";
 const HomeView = () => {
   return (
-    <container>
+    <container >
       <Nav/>
       <Banner/>
       <ContainerFilter/>

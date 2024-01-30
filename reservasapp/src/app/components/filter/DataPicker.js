@@ -1,29 +1,44 @@
-"use client";
-import * as React from "react";
-import dayjs from "dayjs";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import React, { useState } from "react";
+import Datepicker from "react-tailwindcss-datepicker";
 
-export default function DatePickerValue() {
-  const [value, setValue] = React.useState(dayjs("2022-04-17"));
+const DatePickerValue = () => {
+  const today1 = new Date();
+  const today = new Date();
+  let data2 = today.setDate(today.getDate() + 75);
+  const [value, setValue] = useState({
+    startDate: today1,
+    endDate: today1,
+  });
+
+  const handleValueChange = (newValue) => {
+    setValue(newValue);
+  };
+  const disabledDateRange = {
+    startDate: "1995-01-01",
+    endDate: today1,
+  };
 
   return (
-    <div className="p-2 container m-4 bg-slate-50 borderRadius justify-center justify-items-center">
-      <LocalizationProvider dateAdapter={AdapterDayjs} className="bg-blue">
-        <DemoContainer components={["DatePicker", "DatePicker"]}>
-          <DatePicker
-            label="Fecha Inicial"
-            defaultValue={dayjs("2022-04-17")}
-          />
-          <DatePicker
-            label="Fecha Final"
-            value={value}
-            onChange={(newValue) => setValue(newValue)}
-          />
-        </DemoContainer>
-      </LocalizationProvider>
-    </div>
+    <Datepicker
+      useRange={true}
+      separator={"Hasta"}
+      value={value}
+      onChange={handleValueChange}
+      startFrom={today1}
+      displayFormat={"DD/MM/YYYY"}
+      toggleClassName="absolute bg-blue-300 rounded-r-lg text-white right-0 h-10 px-3 text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
+      disabledDates={[
+        {
+          startDate: "1995-01-01",
+          endDate: today1,
+        },
+        {
+          startDate: data2,
+          endDate: "2030-01-01",
+        },
+      ]}
+    />
   );
-}
+};
+
+export default DatePickerValue;

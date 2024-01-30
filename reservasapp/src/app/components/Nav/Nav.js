@@ -11,12 +11,32 @@ import {
   Dropdown,
   DropdownMenu,
   Avatar,
-} from "@nextui-org/react";
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem
+} from "../../../lib/mui";
 
 export default function Nav() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const menuItems = [
+    "Profile",
+    "Dashboard",
+    "Activity",
+    "Analytics",
+    "System",
+    "Deployments",
+    "My Settings",
+    "Team Settings",
+    "Help & Feedback",
+    "Log Out",
+  ];
   return (
-    <Navbar isBordered className="">
+    <Navbar isBordered className="bg-" onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent justify="start">
+      <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="sm:hidden"
+        />
         <NavbarBrand className="mr-4">
           <p className="hidden sm:block font-bold text-inherit">Reservas</p>
         </NavbarBrand>
@@ -37,6 +57,22 @@ export default function Nav() {
             </Link>
           </NavbarItem>
         </NavbarContent>
+        <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link
+              className="w-full"
+              color={
+                index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
+              }
+              href="#"
+              size="lg"
+            >
+              {item}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
       </NavbarContent>
 
       <NavbarContent as="div" className="items-center" justify="end">
