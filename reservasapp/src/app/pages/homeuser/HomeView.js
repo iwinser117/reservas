@@ -7,8 +7,8 @@ const HomeView = () => {
   return (
     <container >
       <Nav/>
-      <Banner/>
       <ContainerFilter/>
+      <Banner/>
       <Footer/>
     </container>
   );
