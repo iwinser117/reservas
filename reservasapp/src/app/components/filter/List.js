@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
+import IconDown from "../../icon/down";
+import { Button } from "@nextui-org/react";
 
 export default function NestedList() {
   const [open, setOpen] = useState(false);
@@ -50,17 +51,18 @@ export default function NestedList() {
         break;
     }
   };
-
   return (
     <>
       <div className="relative">
         <Button
-          className=""
-          variant="contained"
-          color="info"
+          className="bg-blue-100 text-blue-600"
+          color=""
+          size="md"
           onClick={() => handleClick()}
         >
-          Cantidad de Personas
+          {adultsCount} adulto{adultsCount > 1 && "s"}, {childrenCount} niño
+          {childrenCount > 1 && "s"}, {roomsCount} habitación
+          {roomsCount > 1 && "es"} {<IconDown />}
         </Button>
 
         {open && (
@@ -302,22 +304,22 @@ export default function NestedList() {
                 </div>
               </div>
               <footer className="flex justify-around ">
-                <button
-                  type="button"
+                <Button
                   data-testid="guest-selector-reset"
                   className="mb-3"
                   disabled=""
+                  color="danger"
                 >
                   Reiniciar
-                </button>
-                <button
-                  type="button"
-                  className="text-white font-bold disabled:cursor-not-allowed bg-blue-500 rounded-full p-1 mb-3"
+                </Button>
+                <Button
+                  className="text-white font-bold disabled:cursor-not-allowed rounded-full p-1 mb-3"
                   data-testid="guest-selector-apply"
                   onClick={() => handleShowModal()}
+                  color="primary"
                 >
                   Aceptar
-                </button>
+                </Button>
               </footer>
             </div>
           </div>

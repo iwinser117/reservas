@@ -26,7 +26,7 @@ const DatePickerValue = () => {
       onChange={handleValueChange}
       startFrom={today1}
       displayFormat={"DD/MM/YYYY"}
-      toggleClassName="absolute bg-blue-300 rounded-r-lg text-white right-0 h-10 px-3 text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
+      toggleClassName="absolute bg-blue-500 rounded-r-lg text-white right-0 h-10 px-3 text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
       disabledDates={[
         {
           startDate: "1995-01-01",
