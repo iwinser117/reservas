@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main>
       <div className="bg-gray">
-        <h1>Página de inicio</h1>
+        <h1>Página de Administración</h1>
       </div>
     </main>
   );

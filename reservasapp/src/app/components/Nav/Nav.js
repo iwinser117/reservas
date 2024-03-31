@@ -13,7 +13,7 @@ import {
   Avatar,
   NavbarMenuToggle,
   NavbarMenu,
-  NavbarMenuItem
+  NavbarMenuItem,
 } from "../../../lib/mui";
 
 export default function Nav() {
@@ -31,9 +31,9 @@ export default function Nav() {
     "Log Out",
   ];
   return (
-    <Navbar isBordered className="bg-" onMenuOpenChange={setIsMenuOpen}>
+    <Navbar isBordered className="" onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent justify="start">
-      <NavbarMenuToggle
+        <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
@@ -44,6 +44,11 @@ export default function Nav() {
           <NavbarItem>
             <Link color="foreground" href="#">
               Destinos
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link color="foreground" href="#">
+              Ofertas
             </Link>
           </NavbarItem>
           <NavbarItem>
@@ -58,21 +63,25 @@ export default function Nav() {
           </NavbarItem>
         </NavbarContent>
         <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full"
-              color={
-                index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
-              }
-              href="#"
-              size="lg"
-            >
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-      </NavbarMenu>
+          {menuItems.map((item, index) => (
+            <NavbarMenuItem key={`${item}-${index}`}>
+              <Link
+                className="w-full"
+                color={
+                  index === 2
+                    ? "warning"
+                    : index === menuItems.length - 1
+                    ? "danger"
+                    : "foreground"
+                }
+                href="#"
+                size="lg"
+              >
+                {item}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+        </NavbarMenu>
       </NavbarContent>
 
       <NavbarContent as="div" className="items-center" justify="end">
