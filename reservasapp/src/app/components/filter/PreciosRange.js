@@ -1,49 +1,68 @@
 import { Slider } from "@nextui-org/react";
+import React, { useState } from "react";
 
 const RangePrecio = () => {
+  const [value, setValue] = useState([100000, 500000]);
+
+  const formatPrice = (price) => {
+    return price.toLocaleString("es-CO", {
+      style: "currency",
+      currency: "COP",
+      minimumFractionDigits: 0,
+    });
+  };
+
+  const incrementValue = () => {
+    const newValue = [...value];
+    if (newValue[1] < 1500000) {
+      newValue[1] += 1000;
+      setValue(newValue);
+    }
+  };
+
+  const decrementValue = () => {
+    const newValue = [...value];
+    if (newValue[0] > 150000) {
+      newValue[0] -= 1000;
+      setValue(newValue);
+    }
+  };
+
   return (
-    <section>
+    <section className="flex flex-col items-center">
+      <div className="flex justify-between w-full mb-2">
+        <button
+          className="bg-white p-1 rounded-md shadow-md hover:bg-gray-100"
+          onClick={() => {
+            decrementValue();
+          }}
+        >
+          -
+        </button>
+        <p>Ordenar por precios</p>
+        <button
+          className="bg-white p-1 rounded-md shadow-md hover:bg-gray-100"
+          onClick={() => {
+            incrementValue();
+          }}
+        >
+          +
+        </button>
+      </div>
       <Slider
-        label="Precio por Noche"
+        aria-label="Precio por Noche"
         step={1000}
         minValue={150000}
         maxValue={1500000}
-        defaultValue={[100000, 500000]}
-        formatOptions={{
-          style: "currency",
-          currency: "COP",
-          maximumFractionDigits: 0,
-        }}
-        classNames={{
-          base: "max-w-md",
-          filler: "bg-gradient-to-r from-primary-500 to-secondary-400",
-          labelWrapper: "mb-2",
-          label: "font-medium text-default-700 text-medium",
-          value: "font-medium text-default-500 text-small",
-          thumb: [
-            "transition-size",
-            "bg-gradient-to-r from-secondary-400 to-primary-500",
-            "data-[dragging=true]:shadow-lg data-[dragging=true]:shadow-black/20",
-            "data-[dragging=true]:w-7 data-[dragging=true]:h-7 data-[dragging=true]:after:h-6 data-[dragging=true]:after:w-6",
-          ],
-          step: "data-[in-range=true]:bg-black/30 dark:data-[in-range=true]:bg-white/50",
-        }}
-        tooltipProps={{
-          offset: 10,
-          placement: "bottom",
-          classNames: {
-            base: [
-              // arrow color
-              "before:bg-gradient-to-r before:from-secondary-400 before:to-primary-500",
-            ],
-            content: [
-              "py-2 shadow-xl",
-              "text-white bg-gradient-to-r from-secondary-400 to-primary-500",
-            ],
-          },
-        }}
+        defaultValue={value}
+        onChange={setValue}
+        className="w-full"
       />
+      <p className="text-default-500 font-medium text-small w-full text-center">
+        Rango de Precio: {formatPrice(value[0])} - {formatPrice(value[1])}
+      </p>
     </section>
   );
 };
+
 export default RangePrecio;

@@ -27,18 +27,9 @@ ciudades.sort((a, b) => a.label.localeCompare(b.label));
 export default function App() {
   return (
     <div className="flex w-full flex-wrap md:flex-nowrap ">
-      <Select
-        label="seleccione un Destino"
-        size="sm"
-        className="mb-6 md:mb-0"
-        color="primary"
-      >
+      <Select label="seleccione un Destino" size="sm" className="mb-6 md:mb-0 ">
         {ciudades.map((item) => (
-          <SelectItem
-            key={item.value}
-            value={item.value}
-            className="max-w-xs bg-slate-100"
-          >
+          <SelectItem key={item.value} value={item.value} className="max-w-xs">
             {item.label}
           </SelectItem>
         ))}

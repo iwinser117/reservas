@@ -31,7 +31,12 @@ export default function Nav() {
     "Log Out",
   ];
   return (
-    <Navbar isBordered className="" onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      isBordered
+      className=""
+      onMenuOpenChange={setIsMenuOpen}
+      position="static"
+    >
       <NavbarContent justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}

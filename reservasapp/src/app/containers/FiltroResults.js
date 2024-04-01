@@ -1,3 +1,4 @@
+import { Card, Divider } from "@nextui-org/react";
 import ChecksTipo from "../components/filter/Checks";
 import Range from "../components/filter/PreciosRange";
 import ListItem from "../components/ListItem/ListItem";
@@ -66,13 +67,19 @@ const filtro = () => {
       ],
       phone: "+57 1 234 5678",
       paymentMethods: ["Credit card", "Debit card", "Cash"],
+      details: {
+        size: "50 sqm",
+        amenities: "Free Wi-Fi, Room Service, Gym",
+        additionalInfo:
+          "Spacious rooms with city views, located in the heart of Bogotá's financial district.",
+      },
     },
     {
       name: "Hostel El Viajero",
       type: "Hostel",
       price: 80000,
       location: "Cartagena",
-      rating: 4.2,
+      rating: 2,
       image: "https://example.com/hostel-el-viajero.jpg",
       images: [
         "https://example.com/hostel-el-viajero-1.jpg",
@@ -80,6 +87,12 @@ const filtro = () => {
       ],
       phone: "+57 5 678 9012",
       paymentMethods: ["Credit card", "Cash"],
+      details: {
+        size: "30 sqm",
+        amenities: "Free Wi-Fi, Shared Kitchen, Common Area",
+        additionalInfo:
+          "Affordable hostel located in the historic center of Cartagena, perfect for backpackers.",
+      },
     },
     {
       name: "Hotel Boutique B9",
@@ -94,6 +107,12 @@ const filtro = () => {
       ],
       phone: "+57 4 321 4567",
       paymentMethods: ["Credit card", "Debit card"],
+      details: {
+        size: "40 sqm",
+        amenities: "Free Wi-Fi, Spa, Fitness Center",
+        additionalInfo:
+          "Boutique hotel with modern design, located in the trendy El Poblado neighborhood of Medellín.",
+      },
     },
     {
       name: "Hotel Estelar Blue",
@@ -108,6 +127,12 @@ const filtro = () => {
       ],
       phone: "+57 5 890 1234",
       paymentMethods: ["Credit card", "Debit card", "Cash"],
+      details: {
+        size: "45 sqm",
+        amenities: "Free Wi-Fi, Pool, Fitness Center",
+        additionalInfo:
+          "Upscale hotel with ocean views, located in the heart of Barranquilla's business district.",
+      },
     },
     {
       name: "Hotel Regency Suites",
@@ -122,6 +147,12 @@ const filtro = () => {
       ],
       phone: "+57 2 765 4321",
       paymentMethods: ["Credit card", "Debit card"],
+      details: {
+        size: "60 sqm",
+        amenities: "Free Wi-Fi, Room Service, Fitness Center",
+        additionalInfo:
+          "Luxury hotel with spacious suites, located in the upscale El Peñón neighborhood of Cali.",
+      },
     },
     {
       name: "Hotel Dann Carlton",
@@ -136,18 +167,37 @@ const filtro = () => {
       ],
       phone: "+57 1 345 6789",
       paymentMethods: ["Credit card", "Debit card", "Cash"],
+      details: {
+        size: "55 sqm",
+        amenities: "Free Wi-Fi, Room Service, Fitness Center",
+        additionalInfo:
+          "Five-star hotel with elegant decor, located in Bogotá's financial district.",
+      },
     },
   ];
   return (
     <>
-      <div className="container flex justify-around mx-auto mt-9">
-        <section className="w-1/4">
-          <Range />
-          <ChecksTipo items={orderBy} name="Ordenar Por" />
-          <ChecksTipo items={tipos} name="Tipos de Alojamiento" />
-          <ChecksTipo items={services} name="Servicios" />
-        </section>
-        <section className="w-1/2">
+      <div className="container flex w-11/12 mx-auto my-8">
+        <div className="w-4/12 mx-auto">
+          <div className="flex justify-end">
+            <Card
+              className="p-4 my-4 w-4/5 flex h-auto"
+              style={{ minHeight: "auto" }}
+            >
+              <section className="flex flex-col relative">
+                <Range />
+                <Divider className="my-4" />
+                <ChecksTipo items={orderBy} name="Ordenar Por" />
+                <Divider className="my-4" />
+                <ChecksTipo items={tipos} name="Tipos de Alojamiento" />
+                <Divider className="my-4" />
+                <ChecksTipo items={services} name="Servicios" />
+              </section>
+            </Card>
+          </div>
+        </div>
+
+        <section className="w-8/12 ">
           <ListItem items={hotels} />
         </section>
       </div>

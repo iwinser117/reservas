@@ -10,10 +10,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    
-      <html className={isDarkMode ? "dark" : "light"} lang="en">
-        <body  className={isDarkMode ? "dark" : "light"}>{children}</body>
-      </html>
-    
+    <html className={isDarkMode ? "dark" : "light"} lang="en">
+      <body className={isDarkMode ? "dark" : "light"}>{children}</body>
+    </html>
   );
 }

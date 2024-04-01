@@ -19,6 +19,7 @@ export default function ChecksTipo(props) {
         label={props.name}
         value={selectedValues}
         onChange={handleChange}
+        size="sm"
       >
         {props.items.map(
           (item, index) =>
@@ -33,9 +34,11 @@ export default function ChecksTipo(props) {
         )}
       </CheckboxGroup>
       {props.items.length > 5 && (
-        <Button onClick={() => toggleShowAll()}>
-          {showAll ? "Ver menos" : "Ver más"}
-        </Button>
+        <div className="flex w-full justify-center">
+          <Button size="sm" className="" onClick={() => toggleShowAll()}>
+            {showAll ? "Ver menos" : "Ver más"}
+          </Button>
+        </div>
       )}
     </div>
   );
