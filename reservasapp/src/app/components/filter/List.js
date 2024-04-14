@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import IconDown from "../../icon/down";
 import { Button } from "@nextui-org/react";
 
-export default function NestedList() {
+export default function NestedList( ) {
+  
   const [open, setOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [adultsCount, setAdultsCount] = useState(1);
   const [childrenCount, setChildrenCount] = useState(0);
   const [roomsCount, setRoomsCount] = useState(1);
+  const ref = useRef(null);
 
   const handleClick = () => {
     setOpen(!open);
@@ -15,6 +17,7 @@ export default function NestedList() {
 
   const handleShowModal = () => {
     setShowModal(true);
+    setOpen(false);
   };
 
   const handleCloseModal = () => {
@@ -51,9 +54,22 @@ export default function NestedList() {
         break;
     }
   };
+  const handleClickOutside = (event) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setOpen(false);
+      setShowModal(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <>
-      <div className="relative">
+      <div className="relative" ref={ref}>
         <Button
           className="bg-blue-100 text-blue-600"
           color=""
@@ -66,7 +82,7 @@ export default function NestedList() {
         </Button>
 
         {open && (
-          <div className="absolute z-10  w-[18rem] mt-2 transition-transform duration-200">
+          <div className="absolute z-20  w-[18rem] mt-2 transition-transform duration-200">
             <div className=" bg-slate-300 shadow-popover rounded-md">
               <div className="">
                 <div data-testid="">

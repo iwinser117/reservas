@@ -177,11 +177,11 @@ const filtro = () => {
   ];
   return (
     <>
-      <div className="container flex w-11/12 mx-auto my-8">
-        <div className="w-4/12 mx-auto">
-          <div className="flex justify-end">
+      <div className="container sm:w-full  flex w-11/12 mx-auto my-8 ">
+        <div className="w-auto sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 mx-auto">
+          <div className="flex sm:justify-start md:justify-center">
             <Card
-              className="p-4 my-4 w-4/5 flex h-auto"
+              className="p-4 my-4 md:p-2 md:my-2 flex h-auto sm:w-full md:w-5/5 lg:w-full xl:w-10/12 "
               style={{ minHeight: "auto" }}
             >
               <section className="flex flex-col relative">
@@ -197,7 +197,7 @@ const filtro = () => {
           </div>
         </div>
 
-        <section className="w-8/12 ">
+        <section className="w-8/12 md:w-9/12 lg:w-9/12 xl:w-8/12 xl:mx-auto ">
           <ListItem items={hotels} />
         </section>
       </div>

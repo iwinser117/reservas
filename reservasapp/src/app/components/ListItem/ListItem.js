@@ -23,7 +23,7 @@ export default function ListItem(props) {
       {props.items.map((item, index) => (
         <Card
           isBlurred
-          className="border-none my-4 bg-background/60 dark:bg-default-100/50 max-w-[610px] mx-auto hover:bg-sky-100"
+          className="border-none w-full my-4 bg-background/60 dark:bg-default-100/50 sm:max-w-[610px] md:max-w-[610px] lg:max-w-[810px] mx-auto hover:bg-sky-100 xl:max-w-[810px] 2xl:max-w-[910px] "
           shadow="sm"
           key={index}
         >

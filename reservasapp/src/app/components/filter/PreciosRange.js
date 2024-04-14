@@ -39,7 +39,7 @@ const RangePrecio = () => {
         >
           -
         </button>
-        <p>Ordenar por precios</p>
+        <p className="text-sm">Ordenar por precios</p>
         <button
           className="bg-white p-1 rounded-md shadow-md hover:bg-gray-100"
           onClick={() => {
@@ -59,7 +59,7 @@ const RangePrecio = () => {
         className="w-full"
       />
       <p className="text-default-500 font-medium text-small w-full text-center">
-        Rango de Precio: {formatPrice(value[0])} - {formatPrice(value[1])}
+        Rango de Precio: <br></br> {formatPrice(value[0])} - {formatPrice(value[1])}
       </p>
     </section>
   );

@@ -19,7 +19,7 @@ export default function ChecksTipo(props) {
         label={props.name}
         value={selectedValues}
         onChange={handleChange}
-        size="sm"
+        size="sm "
       >
         {props.items.map(
           (item, index) =>
@@ -27,7 +27,7 @@ export default function ChecksTipo(props) {
             (showAll ||
               index < 5 ||
               selectedValues.includes(index.toString())) && (
-              <Checkbox key={index} value={index.toString()}>
+              <Checkbox size="sm" key={index} value={index.toString()}>
                 {item}
               </Checkbox>
             )
