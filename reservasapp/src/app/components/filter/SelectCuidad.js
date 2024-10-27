@@ -26,14 +26,13 @@ let ciudades = [
 ciudades.sort((a, b) => a.label.localeCompare(b.label));
 export default function App() {
   return (
-    <div className="flex w-full flex-wrap md:flex-nowrap ">
-      <Select label="seleccione un Destino" size="sm" className="mb-6 md:mb-0 ">
+    
+      <Select label="Destino seleccionado" size="sm" className="md:mb-0 " placeholder="Seleccione un destino">
         {ciudades.map((item) => (
           <SelectItem key={item.value} value={item.value} className="max-w-xs">
             {item.label}
           </SelectItem>
         ))}
       </Select>
-    </div>
   );
 }

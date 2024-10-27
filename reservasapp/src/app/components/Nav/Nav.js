@@ -19,15 +19,10 @@ import {
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
+    "Logeado",
+    "Configuración",
+    "Perfil",
+    "Compras",
     "Log Out",
   ];
   return (
@@ -43,26 +38,26 @@ export default function Nav() {
           className="sm:hidden"
         />
         <NavbarBrand className="mr-4">
-          <p className="hidden sm:block font-bold text-inherit">Reservas</p>
+          <p className="hidden sm:block font-bold text-inherit">D'visita</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3">
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" href="#" className="hover:bg-gray-200 hover:rounded-full transition duration-300 p-2 rounded-full">
               Destinos
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" href="#" className="hover:bg-gray-200 hover:rounded-full transition duration-300 p-2 rounded-full">
               Ofertas
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link href="#" color="foreground">
+            <Link href="#" color="foreground" className="hover:bg-gray-200 hover:rounded-full transition duration-300 p-2 rounded-full">
               Conócenos
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" href="#" className="hover:bg-gray-200 hover:rounded-full transition duration-300 p-2 rounded-full">
               Contacto
             </Link>
           </NavbarItem>
@@ -71,13 +66,13 @@ export default function Nav() {
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                className="w-full"
+                className="w-full hover:bg-gray-200 hover:rounded-full transition duration-300 p-2 rounded-full"
                 color={
                   index === 2
                     ? "warning"
                     : index === menuItems.length - 1
-                    ? "danger"
-                    : "foreground"
+                      ? "danger"
+                      : "foreground"
                 }
                 href="#"
                 size="lg"
@@ -90,7 +85,7 @@ export default function Nav() {
       </NavbarContent>
 
       <NavbarContent as="div" className="items-center" justify="end">
-        <Input
+        {/* <Input
           classNames={{
             base: "max-w-full sm:max-w-[10rem] h-10",
             mainWrapper: "h-full",
@@ -100,7 +95,7 @@ export default function Nav() {
           placeholder="Type to search..."
           size="sm"
           type="search"
-        />
+        /> */}
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Avatar
@@ -115,15 +110,12 @@ export default function Nav() {
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
+              <p className="font-semibold">Inicio de sesion como</p>
+              <p className="font-semibold">test@example.com</p>
             </DropdownItem>
-            <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
-            <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+            <DropdownItem key="settings">Configuración</DropdownItem>
+            <DropdownItem key="team_settings">Perfil</DropdownItem>
+            <DropdownItem key="analytics" color="success" className="text-success">Compras</DropdownItem>
             <DropdownItem key="logout" color="danger">
               Log Out
             </DropdownItem>

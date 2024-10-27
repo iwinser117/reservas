@@ -35,7 +35,7 @@ export default function ListItem(props) {
                   className="object-cover cursor-pointer"
                   height={200}
                   shadow="md"
-                  src="https://images.pexels.com/photos/7613835/pexels-photo-7613835.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  src="/assets/prom_pto_asis.jpeg"
                   width="100%"
                 />
               </div>
@@ -68,7 +68,7 @@ export default function ListItem(props) {
                     <p className="text-small text-foreground/80">{item.type}</p>
                     <p className="text-medium  mt-2">
                       {item.location}{" "}
-                      <span className="text-small text-foreground/50">
+                      <span className="text-small">
                         desde
                       </span>{" "}
                       {formatPrice(item.price)}{" "}
@@ -86,6 +86,7 @@ export default function ListItem(props) {
                     radius="full"
                     variant="light"
                     onPress={() => toggleLiked(index)}
+                    aria-label="HeartIcon"
                   >
                     <HeartIcon
                       className={
