@@ -6,7 +6,7 @@ import { Button } from "@nextui-org/react";
 export default function ContainerFilter() {
   return (
     <div className="flex flex-col items-center justify-evenly m-auto h-auto bg-cover bg-center bg-no-repeat bg-[url('/assets/img_bg_filter.jpeg')] p-8 mt-4">
-      <div className="container flex flex-col gap-4 m-auto p-4 md:p-6 max-w-5xl bg-white bg-opacity-60 rounded-lg">
+      <div className="container flex flex-col gap-4 m-auto p-4 md:p-6 max-w-5xl bg-black bg-opacity-60 rounded-lg">
         <div className="flex flex-col md:flex-row justify-around gap-4">
           <h1 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white text-transparent bg-clip-text bg-gradient-to-r to-blue-600 from-sky-400">Encuentra tu lugar ideal</h1>
         </div>

@@ -100,10 +100,9 @@ export default function GuestSelector() {
     <div className="relative">
       <Button
         variant="flat"
-        color="default"
         size="lg"
         onPress={() => setIsOpen(true)}
-        className="w-full flex justify-between items-center px-4 py-2 text-left rounded-md  text-gray-700"
+        className="w-full flex justify-between items-center px-4 py-2 text-left rounded-md  text-gray-700 bg-white"
       >
         {counts.adults} adulto{counts.adults > 1 && "s"}, 
         {counts.children} niño{counts.children > 1 && "s"}, 

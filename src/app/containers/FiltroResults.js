@@ -1,5 +1,6 @@
 import { Card, Divider } from "@nextui-org/react";
 import ChecksTipo from "../components/filter/Checks";
+import RadioButton from "../components/filter/RadioButton";
 import Range from "../components/filter/PreciosRange";
 import ListItem from "../components/ListItem/ListItem";
 import { tipos, services, orderBy, hotels } from '../../data/data';
@@ -13,7 +14,7 @@ const Filtro = () => {
           <section className="flex flex-col relative">
             <Range />
             <Divider className="my-4" />
-            <ChecksTipo items={orderBy} name="Ordenar Por" />
+            <RadioButton items={orderBy} name="Ordenar Por" />
             <Divider className="my-4" />
             <ChecksTipo items={tipos} name="Tipos de Alojamiento" />
             <Divider className="my-4" />
