@@ -1,13 +1,24 @@
-import { useState } from 'react';
+"use client";
+import { useState, useMemo } from 'react';
 import { Card, Divider, Button } from "@nextui-org/react";
 import ChecksTipo from "../components/filter/Checks";
 import RadioButton from "../components/filter/RadioButton";
 import Range from "../components/filter/PreciosRange";
 import ListItem from "../components/ListItem/ListItem";
 import { tipos, services, orderBy, hotels } from '../../data/data';
+import { useFilters } from '@/context/FilterContext';
+import { applyFilters, sortHotels } from '@/lib/filterUtils';
 
 const Filtro = () => {
+  const { filters } = useFilters();
   const [showFilters, setShowFilters] = useState(false);
+
+  // Aplicar filtros y ordenamiento
+  const filteredHotels = useMemo(() => {
+    let result = applyFilters(hotels, filters);
+    result = sortHotels(result, filters.sortBy);
+    return result;
+  }, [filters]);
 
   return (
     <div className="container flex flex-col md:flex-row sm:flex-row lg:flex-row w-11/12 mx-auto my-8 gap-4 justify-around">
@@ -36,7 +47,19 @@ const Filtro = () => {
 
       {/* Sección de lista de items */}
       <section className="w-full lg:w-8/12">
-        <ListItem items={hotels} />
+        {filteredHotels.length > 0 ? (
+          <>
+            <div className="mb-4 text-sm text-gray-600">
+              Se encontraron {filteredHotels.length} alojamiento{filteredHotels.length !== 1 ? 's' : ''}
+            </div>
+            <ListItem items={filteredHotels} />
+          </>
+        ) : (
+          <Card className="p-8 text-center">
+            <p className="text-gray-600">No se encontraron alojamientos que coincidan con tu búsqueda.</p>
+            <p className="text-sm text-gray-400 mt-2">Intenta ajustar los filtros o la búsqueda.</p>
+          </Card>
+        )}
       </section>
     </div>
   );

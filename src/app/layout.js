@@ -1,4 +1,5 @@
 import "./globals.css";
+import ClientLayout from "./ClientLayout";
 
 const isDarkMode = false;
 
@@ -14,7 +15,9 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="./assets/iconiwinser.svg" /> {/* Asegúrate de tener un favicon en public/favicon.ico */}
       </head>
       <body className={isDarkMode ? "dark" : "light"}>
-        {children}
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );

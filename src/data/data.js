@@ -46,7 +46,8 @@ export const services = [
 export const orderBy = [
     "Precio de Menor a Mayor",
     "Precio de Mayor a Menor",
-    "Distancia",
+    "Mejor Calificación",
+    "Nombre",
 ];
 export const hotels = [
     {
@@ -62,6 +63,7 @@ export const hotels = [
         ],
         phone: "+57 1 234 5678",
         paymentMethods: ["Credit card", "Debit card", "Cash"],
+        amenities: ["Wifi", "Gimnasio", "Restaurant", "Room service", "Aire Acondicionado"],
         details: {
             size: "50 sqm",
             amenities: "Free Wi-Fi, Room Service, Gym",
@@ -82,6 +84,7 @@ export const hotels = [
         ],
         phone: "+57 5 678 9012",
         paymentMethods: ["Credit card", "Cash"],
+        amenities: ["Wifi", "Cocina", "Accesible", "Actividades acuáticas"],
         details: {
             size: "30 sqm",
             amenities: "Free Wi-Fi, Shared Kitchen, Common Area",
@@ -102,6 +105,7 @@ export const hotels = [
         ],
         phone: "+57 4 321 4567",
         paymentMethods: ["Credit card", "Debit card"],
+        amenities: ["Wifi", "Spa", "Gimnasio", "Restaurant", "Aire Acondicionado", "Room service"],
         details: {
             size: "40 sqm",
             amenities: "Free Wi-Fi, Spa, Fitness Center",
@@ -122,6 +126,7 @@ export const hotels = [
         ],
         phone: "+57 5 890 1234",
         paymentMethods: ["Credit card", "Debit card", "Cash"],
+        amenities: ["Wifi", "Piscina", "Gimnasio", "Acceso a la playa", "Restaurant", "Bar"],
         details: {
             size: "45 sqm",
             amenities: "Free Wi-Fi, Pool, Fitness Center",
@@ -142,6 +147,7 @@ export const hotels = [
         ],
         phone: "+57 2 765 4321",
         paymentMethods: ["Credit card", "Debit card"],
+        amenities: ["Wifi", "Room service", "Gimnasio", "Desayuno", "Estacionamiento"],
         details: {
             size: "60 sqm",
             amenities: "Free Wi-Fi, Room Service, Fitness Center",
@@ -162,11 +168,180 @@ export const hotels = [
         ],
         phone: "+57 1 345 6789",
         paymentMethods: ["Credit card", "Debit card", "Cash"],
+        amenities: ["Wifi", "Room service", "Gimnasio", "Concierge", "Business center", "Aire Acondicionado"],
         details: {
             size: "55 sqm",
             amenities: "Free Wi-Fi, Room Service, Fitness Center",
             additionalInfo:
                 "Five-star hotel with elegant decor, located in Bogotá's financial district.",
+        },
+    },
+    {
+        name: "Resort Playa Paraíso",
+        type: "Resort",
+        price: 450000,
+        location: "Cartagena",
+        rating: 4.8,
+        image: "https://example.com/resort-playa.jpg",
+        images: [
+            "https://example.com/resort-playa-1.jpg",
+            "https://example.com/resort-playa-2.jpg",
+        ],
+        phone: "+57 5 123 4567",
+        paymentMethods: ["Credit card", "Debit card"],
+        amenities: ["Acceso a la playa", "Piscina", "Restaurant", "Spa", "Actividades acuáticas", "Wifi", "Bar"],
+        details: {
+            size: "100 sqm",
+            amenities: "Beach Access, Pool, Restaurant, Spa",
+            additionalInfo:
+                "All-inclusive resort with beach access, perfect for families and couples seeking relaxation.",
+        },
+    },
+    {
+        name: "Casa Rural La Finca",
+        type: "Casa rural",
+        price: 150000,
+        location: "Medellín",
+        rating: 4.2,
+        image: "https://example.com/casa-finca.jpg",
+        images: [
+            "https://example.com/casa-finca-1.jpg",
+            "https://example.com/casa-finca-2.jpg",
+        ],
+        phone: "+57 4 456 7890",
+        paymentMethods: ["Cash", "Credit card"],
+        amenities: ["Cocina", "Wifi", "Estacionamiento", "Aire Acondicionado"],
+        details: {
+            size: "80 sqm",
+            amenities: "Garden, Kitchen, Wifi, Peaceful Setting",
+            additionalInfo:
+                "Charming rural house with garden views and traditional Colombian hospitality.",
+        },
+    },
+    {
+        name: "Bed & Breakfast Vista Mar",
+        type: "Bed & Breakfast",
+        price: 120000,
+        location: "Santa Marta",
+        rating: 4.1,
+        image: "https://example.com/bb-vista-mar.jpg",
+        images: [
+            "https://example.com/bb-vista-mar-1.jpg",
+            "https://example.com/bb-vista-mar-2.jpg",
+        ],
+        phone: "+57 5 789 0123",
+        paymentMethods: ["Credit card", "Cash"],
+        amenities: ["Desayuno", "Wifi", "Acceso a la playa", "TV"],
+        details: {
+            size: "35 sqm",
+            amenities: "Breakfast Included, Ocean View, Wifi",
+            additionalInfo:
+                "Cozy bed and breakfast with ocean views and homemade breakfast included.",
+        },
+    },
+    {
+        name: "Apartahotel Ejecutivo",
+        type: "Apartahotel",
+        price: 260000,
+        location: "Bogotá",
+        rating: 4.5,
+        image: "https://example.com/apartahotel.jpg",
+        images: [
+            "https://example.com/apartahotel-1.jpg",
+            "https://example.com/apartahotel-2.jpg",
+        ],
+        phone: "+57 1 567 8901",
+        paymentMethods: ["Credit card", "Debit card", "Bank Transfer"],
+        amenities: ["Cocina", "Wifi", "Gimnasio", "Lavandería", "Business center"],
+        details: {
+            size: "75 sqm",
+            amenities: "Kitchenette, Workspace, Gym, Laundry",
+            additionalInfo:
+                "Furnished apartment with kitchen facility, ideal for long-term stays and business travelers.",
+        },
+    },
+    {
+        name: "Camping Montaña Verde",
+        type: "Camping",
+        price: 60000,
+        location: "Bucaramanga",
+        rating: 3.8,
+        image: "https://example.com/camping.jpg",
+        images: [
+            "https://example.com/camping-1.jpg",
+            "https://example.com/camping-2.jpg",
+        ],
+        phone: "+57 7 234 5678",
+        paymentMethods: ["Cash", "Credit card"],
+        amenities: ["Wifi", "Actividades acuáticas", "Estacionamiento"],
+        details: {
+            size: "20 sqm",
+            amenities: "Tent, Bonfire, Water, Wifi Available",
+            additionalInfo:
+                "Mountain camping experience with nature trails and outdoor activities.",
+        },
+    },
+    {
+        name: "Hostel Viajeros del Mundo",
+        type: "Hostal",
+        price: 70000,
+        location: "Cali",
+        rating: 3.9,
+        image: "https://example.com/hostel-viajeros.jpg",
+        images: [
+            "https://example.com/hostel-viajeros-1.jpg",
+            "https://example.com/hostel-viajeros-2.jpg",
+        ],
+        phone: "+57 2 890 1234",
+        paymentMethods: ["Credit card", "Cash"],
+        amenities: ["Cocina", "Wifi", "TV", "Accesible"],
+        details: {
+            size: "25 sqm",
+            amenities: "Shared Kitchen, Common Areas, Social Events",
+            additionalInfo:
+                "Budget-friendly hostel with social atmosphere for backpackers and travelers.",
+        },
+    },
+    {
+        name: "Posada del Navegante",
+        type: "Posada",
+        price: 110000,
+        location: "Barranquilla",
+        rating: 4.0,
+        image: "https://example.com/posada.jpg",
+        images: [
+            "https://example.com/posada-1.jpg",
+            "https://example.com/posada-2.jpg",
+        ],
+        phone: "+57 5 456 7890",
+        paymentMethods: ["Cash", "Credit card"],
+        amenities: ["Restaurant", "Bar", "Wifi", "Estacionamiento"],
+        details: {
+            size: "40 sqm",
+            amenities: "Restaurant, Bar, Wifi, Parking",
+            additionalInfo:
+                "Traditional colonial-style inn with authentic local dining and warm hospitality.",
+        },
+    },
+    {
+        name: "Motel Descanso Viajero",
+        type: "Motel",
+        price: 95000,
+        location: "Armenia",
+        rating: 3.7,
+        image: "https://example.com/motel.jpg",
+        images: [
+            "https://example.com/motel-1.jpg",
+            "https://example.com/motel-2.jpg",
+        ],
+        phone: "+57 6 123 4567",
+        paymentMethods: ["Cash", "Credit card"],
+        amenities: ["Estacionamiento", "Wifi", "TV", "Aire Acondicionado"],
+        details: {
+            size: "45 sqm",
+            amenities: "Parking, Wifi, TV, Coffee Maker",
+            additionalInfo:
+                "Comfortable motel conveniently located near main highway with quick check-in service.",
         },
     },
 ];

@@ -1,9 +1,18 @@
+"use client";
 import DataPicker from "./DataPicker";
 import SelectCuidad from "./SelectCuidad";
 import List from "./List";
 import { Button } from "@nextui-org/react";
+import { useFilters } from "@/context/FilterContext";
 
 export default function ContainerFilter() {
+  const { filters } = useFilters();
+
+  const handleSearch = () => {
+    // El filtrado es automático ahora, pero puedes agregar analytics aquí
+    console.log("Búsqueda con filtros:", filters);
+  };
+
   return (
     <div className="flex flex-col items-center justify-evenly m-auto h-auto bg-cover bg-center bg-no-repeat bg-[url('/assets/img_bg_filter.jpeg')] p-8 mt-4">
       <div className="container flex flex-col gap-4 m-auto p-4 md:p-6 max-w-5xl bg-black bg-opacity-60 rounded-lg">
@@ -33,8 +42,12 @@ export default function ContainerFilter() {
 
         {/* Tercera Fila: Botón de Búsqueda */}
         <div className="flex justify-center mt-4">
-          <Button color="primary" className="w-full md:w-auto">
-            Buscar
+          <Button 
+            color="primary" 
+            className="w-full md:w-auto px-8 py-3 text-lg font-semibold"
+            onClick={handleSearch}
+          >
+            🔍 Buscar Alojamientos
           </Button>
         </div>
       </div>

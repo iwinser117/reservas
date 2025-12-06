@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import { RadioGroup, Radio, Button } from "@nextui-org/react";
+import { useFilters } from "@/context/FilterContext";
 
-export default function RedioBtn(props) {
+export default function RadioBtn(props) {
+  const { filters, updateFilter } = useFilters();
   const [showAll, setShowAll] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("");
 
   const toggleShowAll = () => {
     setShowAll(!showAll);
   };
 
   const handleChange = (value) => {
-    setSelectedValue(value);
+    updateFilter('sortBy', value);
   };
+
+  const selectedIndex = props.items.indexOf(filters.sortBy);
 
   return (
     <div>
       <RadioGroup
         label={props.name}
-        value={selectedValue}
+        value={filters.sortBy}
         onValueChange={handleChange}
         size="sm"
       >
@@ -25,8 +28,8 @@ export default function RedioBtn(props) {
           (item, index) =>
             (showAll ||
               index < 5 ||
-              selectedValue === index.toString()) && (
-              <Radio size="sm" key={index} value={index.toString()}>
+              selectedIndex === index) && (
+              <Radio size="sm" key={index} value={item}>
                 {item}
               </Radio>
             )

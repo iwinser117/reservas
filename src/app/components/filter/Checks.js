@@ -1,17 +1,33 @@
 import React, { useState } from "react";
 import { CheckboxGroup, Checkbox, Button } from "@nextui-org/react";
+import { useFilters } from "@/context/FilterContext";
 
 export default function ChecksTipo(props) {
+  const { filters, updateFilter } = useFilters();
   const [showAll, setShowAll] = useState(false);
-  const [selectedValues, setSelectedValues] = useState([]);
 
   const toggleShowAll = () => {
     setShowAll(!showAll);
   };
 
   const handleChange = (values) => {
-    setSelectedValues(values);
+    if (props.name === "Tipos de Alojamiento") {
+      updateFilter('types', values);
+    } else if (props.name === "Servicios") {
+      updateFilter('services', values);
+    }
   };
+
+  const getSelectedValues = () => {
+    if (props.name === "Tipos de Alojamiento") {
+      return filters.types;
+    } else if (props.name === "Servicios") {
+      return filters.services;
+    }
+    return [];
+  };
+
+  const selectedValues = getSelectedValues();
 
   return (
     <div>
@@ -19,15 +35,14 @@ export default function ChecksTipo(props) {
         label={props.name}
         value={selectedValues}
         onChange={handleChange}
-        size="sm "
+        size="sm"
       >
         {props.items.map(
           (item, index) =>
-            // Solo mostrar los primeros 5 elementos si no se ha seleccionado "Ver más"
             (showAll ||
               index < 5 ||
-              selectedValues.includes(index.toString())) && (
-              <Checkbox size="sm" key={index} value={index.toString()}>
+              selectedValues.includes(item)) && (
+              <Checkbox size="sm" key={index} value={item}>
                 {item}
               </Checkbox>
             )

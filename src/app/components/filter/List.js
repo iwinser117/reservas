@@ -1,15 +1,17 @@
 import React, { useState, useCallback } from "react";
-import { Button, Input, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Checkbox, Select } from "@nextui-org/react";
+import { Button, Input, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Checkbox } from "@nextui-org/react";
 import { Plus, Minus } from "lucide-react";
+import { useFilters } from "@/context/FilterContext";
 
 export default function GuestSelector() {
+  const { filters, updateMultipleFilters } = useFilters();
   const [isOpen, setIsOpen] = useState(false);
-  const [counts, setCounts] = useState({
-    adults: 1,
-    children: 0,
-    rooms: 1
+  const [localCounts, setLocalCounts] = useState({
+    adults: filters.adults,
+    children: filters.children,
+    rooms: filters.rooms
   });
-  const [isPetFriendly, setIsPetFriendly] = useState(false);
+  const [isPetFriendly, setIsPetFriendly] = useState(filters.petFriendly);
 
   const limits = {
     adults: { min: 1, max: 5 },
@@ -18,7 +20,7 @@ export default function GuestSelector() {
   };
 
   const handleCount = useCallback((type, operation) => {
-    setCounts(prev => {
+    setLocalCounts(prev => {
       const current = prev[type];
       const { min, max } = limits[type];
       const newValue = operation === 'increment' 
@@ -39,14 +41,14 @@ export default function GuestSelector() {
     const { min, max } = limits[type];
     const validValue = Math.max(min, Math.min(max, numValue));
 
-    setCounts(prev => ({
+    setLocalCounts(prev => ({
       ...prev,
       [type]: validValue
     }));
   }, []);
 
   const handleReset = useCallback(() => {
-    setCounts({
+    setLocalCounts({
       adults: 1,
       children: 0,
       rooms: 1
@@ -54,8 +56,18 @@ export default function GuestSelector() {
     setIsPetFriendly(false);
   }, []);
 
+  const handleAccept = () => {
+    updateMultipleFilters({
+      adults: localCounts.adults,
+      children: localCounts.children,
+      rooms: localCounts.rooms,
+      petFriendly: isPetFriendly
+    });
+    setIsOpen(false);
+  };
+
   const CounterInput = useCallback(({ label, type }) => {
-    const value = counts[type];
+    const value = localCounts[type];
     const { min, max } = limits[type];
 
     return (
@@ -74,7 +86,7 @@ export default function GuestSelector() {
           </Button>
           <Input
             type="number"
-            value={value}
+            value={String(value)}
             className="w-16 text-center"
             size="sm"
             min={min}
@@ -94,7 +106,7 @@ export default function GuestSelector() {
         </div>
       </div>
     );
-  }, [counts, handleCount, handleInputChange]);
+  }, [localCounts, handleCount, handleInputChange]);
 
   return (
     <div className="relative">
@@ -102,11 +114,11 @@ export default function GuestSelector() {
         variant="flat"
         size="lg"
         onPress={() => setIsOpen(true)}
-        className="w-full flex justify-between items-center px-4 py-2 text-left rounded-md  text-gray-700 bg-white"
+        className="w-full flex justify-between items-center px-4 py-2 text-left rounded-md text-gray-700 bg-white"
       >
-        {counts.adults} adulto{counts.adults > 1 && "s"}, 
-        {counts.children} niño{counts.children > 1 && "s"}, 
-        {counts.rooms} habitación{counts.rooms > 1 && "es"}
+        {filters.adults} adulto{filters.adults > 1 && "s"}, 
+        {filters.children} niño{filters.children > 1 && "s"}, 
+        {filters.rooms} habitación{filters.rooms > 1 && "es"}
       </Button>
 
       <Modal 
@@ -143,13 +155,13 @@ export default function GuestSelector() {
               color="danger"
               variant="flat"
               onPress={handleReset}
-              isDisabled={counts.adults === 1 && counts.children === 0 && counts.rooms === 1 && !isPetFriendly}
+              isDisabled={localCounts.adults === 1 && localCounts.children === 0 && localCounts.rooms === 1 && !isPetFriendly}
             >
               Reiniciar
             </Button>
             <Button
               color="primary"
-              onPress={() => setIsOpen(false)}
+              onPress={handleAccept}
             >
               Aceptar
             </Button>
